@@ -1,6 +1,6 @@
-# sith-developer
+# sith developer
 
-Guide to becoming a modern frontend developer
+Guide to becoming a modern [frontend developer](https://roadmap.sh/frontend)
 
 ## Repositorios
 
