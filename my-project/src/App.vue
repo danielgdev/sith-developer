@@ -1,10 +1,18 @@
 <template>
   <div id="app">
-    <h1>Proyecto en vue</h1>
+    <h1 class="text-3xl text-gray-700 font-bold">Proyecto en vue</h1>
+    <br />
+    <br />
+    <label>Total de elementos: {{total_unidad}}</label>
+    <br />
+    <label>Total: {{total_precio}}</label>
+    <br />
+    <br />
     <input v-model="name" />
+    <input v-model="price" />
     <br />
     <br />
-    <label>{{ toLower }}</label>
+    <button @click="agregar">Agregar</button>
   </div>
 </template>
 
@@ -13,12 +21,32 @@ export default {
   name: "App",
   data() {
     return {
-      name: ""
+      cart: [],
+      name: "",
+      price: 0
     };
   },
+  methods: {
+    agregar() {
+      this.cart.push({
+        name: this.name,
+        price: this.price
+      });
+      this.name = "";
+      this.price = 0;
+      console.log(this.cart);
+    }
+  },
   computed: {
-    toLower() {
-      return this.name.toLowerCase();
+    total_unidad() {
+      return this.cart.length;
+    },
+    total_precio() {
+      let total = 0;
+      for (const item of this.cart) {
+        total += parseFloat(item.price);
+      }
+      return total;
     }
   }
 };
